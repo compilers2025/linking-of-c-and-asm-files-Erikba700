@@ -1,18 +1,19 @@
-# you'll need to replace '?' with more meaningful stuff.
-
 .text
-	.globl	math_func
-	.type	math_func, @function
+        .globl  math_func
+        .type   math_func, @function
 math_func:
+        # Move variable i into %rax
+        mov i(%rip), %rax
 
-   # this moves variable i from the memory to the %rax register
-   mov i, %rax 
-   # write something to move variable j to the %rbx register
-   ??????????
-   # do j - i
-   sub  ?, ? 
-   # at the end of the function %rax should contain the return of the function
-   # do something so for that:
-   ??????????
-   #function exits
-   ret
+        # Move variable j into %rbx
+        mov j(%rip), %rbx
+
+        # Compute j - i
+        sub %rax, %rbx
+
+        # Move the result into %rax (return value)
+        mov %rbx, %rax
+
+        # Return
+        ret
+
